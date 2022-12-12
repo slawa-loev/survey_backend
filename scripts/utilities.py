@@ -19,7 +19,7 @@ def fetch_client():
 
     return bigquery.Client(project=project, credentials=credentials)
 
-def validate_table_name(table_name: str) -> str:
+def validate_table_name(table_name: str=os.getenv('GBQ_TABLE')) -> str:
     """Validates table name to prevent SQL injection attacks."""
     if not table_name[0] == "`":
         #raise NameError("` missing at the start of table name. Please add and retry.")

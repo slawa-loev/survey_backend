@@ -3,26 +3,19 @@ from google.oauth2 import service_account
 import pandas as pd
 import os
 from dotenv import load_dotenv
+from utilities import fetch_client
 
 load_dotenv()
 
 # Setting up data warehouse on BQ
 
-key_path=os.getenv('KEY_PATH')
 project = os.getenv('GCP_PROJECT_ID')
 dataset_name = os.getenv('GBQ_DATASET')
 table_name = os.getenv('GBQ_TABLE')
 
 
-output_csv = False if os.getenv('OUTPUT_CSV') == "False" else True
+bq = fetch_client()
 
-credentials = service_account.Credentials.from_service_account_file(
-    key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
-)
-
-# Creating basic structure: dataset in specified project and table
-
-bq = bigquery.Client(project=project, credentials=credentials)
 bq.create_dataset(dataset_name, exists_ok=True)
 bq.create_table(table_name, exists_ok=True)
 

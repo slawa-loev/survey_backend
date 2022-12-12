@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from utilities import fetch_client
 
+# loads configurations from .env ("dotenv") file
 load_dotenv()
 
 project = os.getenv('GCP_PROJECT_ID')

@@ -7,7 +7,7 @@ from utilities import fetch_client
 
 load_dotenv()
 
-# Setting up data warehouse on BQ
+# Setting up data table on BQ with simple schema for interaction with SurveyJS
 
 project = os.getenv('GCP_PROJECT_ID')
 dataset_name = os.getenv('GBQ_DATASET')

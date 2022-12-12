@@ -2,8 +2,13 @@ import os
 from dotenv import load_dotenv
 from utilities import fetch_client
 
+# script testing a basic data ingestion workflow with GBQ
+
+
+# loads configurations from .env ("dotenv") file
 load_dotenv()
 
+# loads GBQ names from .env
 project = os.getenv('GCP_PROJECT_ID')
 dataset_name = os.getenv('GBQ_DATASET')
 table_name = os.getenv('GBQ_TABLE')
