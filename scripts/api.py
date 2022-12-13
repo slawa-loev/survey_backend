@@ -1,13 +1,11 @@
 from fastapi import FastAPI, Request, Response
 import os
 from dotenv import load_dotenv
-from utilities import fetch_client
+from utilities import fetch_client, ingest_data
 
 # loads configurations from .env ("dotenv") file
 load_dotenv()
 
-project = os.getenv('GCP_PROJECT_ID')
-dataset_name = os.getenv('GBQ_DATASET')
 table_name = os.getenv('GBQ_TABLE_SIMPLE')
 
 # creates fastapi client
@@ -35,6 +33,8 @@ async def receive_survey_results(request: Request) -> Response:
 
     # establishes connection with GBQ client
     bq = fetch_client()
+
+    #errors = ingest_data(data_entries, table_name=table_name) # ToDo: test module, adapt if clause to [] or None
 
     # fetches table in which data is to be ingested
     table = bq.get_table(table_name)
