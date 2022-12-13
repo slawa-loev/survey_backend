@@ -2,7 +2,7 @@
 
 ## database interaction
 
-To interact with the GBQ database use the `.env` file, in which you can set path to database credentials and formulate SQL-queries.
+To interact with the GBQ database use the `.env` file (provided seperately by the repository owner to you), in which you can set path to database credentials and formulate SQL-queries.
 
 After you configured the `.env` file to your needs, simply execute `make query` in your terminal.
 
